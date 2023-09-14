@@ -1,41 +1,53 @@
-import {AppProvider, Page, LegacyCard, Tabs} from '@shopify/polaris';
-import {useState, useCallback} from 'react';
+import { LegacyCard, Tabs } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import Tab1 from "./Tab1";
+import Tab2 from "./Tab2";
+import Tab3 from "./Tab3";
 
-const  MainTab=()=> {
+const MainTab = () => {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
+    []
   );
 
   const tabs = [
     {
-      id: 'all-customers-fitted-2',
-      content: 'All',
-      accessibilityLabel: 'All customers',
-      panelID: 'all-customers-fitted-content-2',
+      id: "connect-google-platform",
+      content: "Connect Google Platform",
+      accessibilityLabel: "Connect Google Platform",
+      panelID: "connect-google-platform-content",
     },
     {
-      id: 'accepts-marketing-fitted-2',
-      content: 'Accepts marketing',
-      panelID: 'accepts-marketing-fitted-Ccontent-2',
+      id: "layout-template",
+      content: "Layout Template",
+      panelID: "layout-template-content",
+    },
+    {
+      id: "layout-setting",
+      content: "Layout Setting",
+      panelID: "layout-setting-content",
     },
   ];
 
   return (
-    <AppProvider >
-    <Page title="Example app">
     <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+        <LegacyCard.Section >
+        <div id="connect-google-platform-content">
+        {selected ==0 && <Tab1 />}
+      </div>
+      <div id="layout-template-content">
+        {selected ==1 && <Tab2 />}
+      </div>
+      <div id="layout-setting-content">
+        {selected ==2 && <Tab3 />}
+      </div>
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>
-    </Page>
-</AppProvider>
   );
-}
+};
 
-export default MainTab
+export default MainTab;

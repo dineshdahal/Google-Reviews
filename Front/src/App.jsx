@@ -1,12 +1,16 @@
-import MainTab from './Pages/MainTab'
-
+import { AppProvider, Page } from "@shopify/polaris";
+import MainTab from "./Pages/MainTab";
 
 const App = () => {
-  return (<>
-    <div>App</div>
-    <MainTab/>
-  </>
-  )
-}
+  return (
+    <>
+    <AppProvider >
+    <Page title="Example app">
+      <MainTab />
+    </Page>
+    </AppProvider>
+    </>
+  );
+};
 
-export default App
+export default App;
