@@ -34,16 +34,14 @@ const MainTab = () => {
   return (
     <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <LegacyCard.Section >
-        <div id="connect-google-platform-content">
+        <LegacyCard.Section id="main-bg" >
+      
         {selected ==0 && <Tab1 />}
-      </div>
-      <div id="layout-template-content">
+     
         {selected ==1 && <Tab2 />}
-      </div>
-      <div id="layout-setting-content">
+    
         {selected ==2 && <Tab3 />}
-      </div>
+     
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>

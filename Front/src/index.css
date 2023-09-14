@@ -1,0 +1,72 @@
+#main-bg {
+    background: #f1f2f4;
+}
+
+#disconnect {
+    background: #f6f6f6;
+    border-color: #e0e0e1;
+    border-radius: 5px;
+}
+
+#update-box {
+    background: #fff;
+    border-color: #e0e0e1;
+    border-radius: 5px;
+}
+
+.Polaris-Tabs__Tab {
+    background: #fff !important;
+    color: #000000 !important;
+    opacity: 0.7;
+}
+
+.Polaris-Tabs__Tab:hover {
+    opacity: 1;
+    border-bottom: 3px solid grey !important;
+}
+
+.Polaris-Tabs__Tab--active {
+    opacity: 1;
+    background-color: #fff !important;
+    color: #000 !important;
+    border-bottom: 3px solid green !important;
+}
+
+#disconnect-btn {
+    height: fit-content;
+    padding: 10px 15px;
+}
+
+.Polaris-LegacyCard__Section {
+    background: #f6f6f6;
+}
+
+#Tab1-preview {
+    background: #fff;
+}
+
+.swiper-button-prev {
+    color: #525252;
+    height: 10px !important;
+    left: 0px;
+}
+
+.swiper-button-next {
+    color: #525252;
+    height: 10px !important;
+    right: 0px;
+}
+
+#ReviewCard {
+    background: #efefef;
+    padding: 15px 15px;
+    margin-bottom: 40px;
+}
+
+ img::after img::before img{
+ object-fit: cover;
+}
+
+a{
+   text-decoration: none;
+}

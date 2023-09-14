@@ -4,11 +4,11 @@ import MainTab from "./Pages/MainTab";
 const App = () => {
   return (
     <>
-    <AppProvider >
-    <Page title="Example app">
-      <MainTab />
-    </Page>
-    </AppProvider>
+      <AppProvider>
+        <Page title="Google Reviews">
+          <MainTab />
+        </Page>
+      </AppProvider>
     </>
   );
 };
