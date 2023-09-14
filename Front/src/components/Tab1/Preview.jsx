@@ -9,10 +9,10 @@ const Preview = () => {
                 <Text variant="headingSm" as="h6">Preview</Text>
             </div>
             <HorizontalStack>
-                <div className="col-4 d-flex align-items-center">
+                <div className=" d-flex align-items-center" style={{width:'25%'}}>
                     <SwiperFront />
                 </div>
-                <div className="col-8 ">
+                <div style={{width:'75%'}} className="px-2">
                     <Swiper1 />
                 </div>
             </HorizontalStack>
