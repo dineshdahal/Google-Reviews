@@ -14,11 +14,13 @@ export default function Disconnect() {
     <Box borderWidth="2" padding={"3"} borderRadius="20" id="disconnect">
       <HorizontalStack align="space-between">
         <HorizontalStack gap={"2"}>
+          <div className="disconnect-thumbnail">
           <Thumbnail
             source={imgmain}
             alt="Avatar"
             size="medium"
-          />
+            />
+            </div>
           <div className="d-flex align-items-center">
             <Placeholder
               title="Nerd Platoon Pvt. Ltd."

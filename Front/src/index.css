@@ -1,3 +1,7 @@
+:root{
+    --swiper-navigation-size:20px;
+}
+
 #main-bg {
     background: #f1f2f4;
 }
@@ -63,9 +67,9 @@
     margin-bottom: 40px;
 }
 
- img::after img::before img{
- object-fit: cover;
- width: 100%;
+ .disconnect-thumbnail> .Polaris-Thumbnail > *{
+ object-fit: cover !important;
+ height: 100% !important;
 }
 
 a{
