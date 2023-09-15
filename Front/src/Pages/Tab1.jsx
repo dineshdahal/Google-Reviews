@@ -7,13 +7,13 @@ import SetupInstruction from "../components/Tab1/SetupInstruction";
 const Tab1 = () => {
   return (
     <>
-      <div style={{ marginBottom: '25px' }}>
+      <div className="mb-4">
         <Disconnect />
       </div>
-      <div style={{marginBottom:'25px'}}>
+      <div className="mb-4">
         <Update />
       </div>
-     <div style={{marginBottom:'25px'}}>
+     <div className="mb-4 ">
       <Preview/>
      </div>
      <div>

@@ -11,6 +11,8 @@ import imgmain from './../../assets/nerdplatoon.png'
 
 export default function Disconnect() {
   return (
+    <>
+
     <Box borderWidth="2" padding={"3"} borderRadius="20" id="disconnect">
       <HorizontalStack align="space-between">
         <HorizontalStack gap={"2"}>
@@ -25,7 +27,7 @@ export default function Disconnect() {
             <Placeholder
               title="Nerd Platoon Pvt. Ltd."
               label="SallaGhari, Bhaktapur 44800, Nepal"
-            />
+              />
           </div>
         </HorizontalStack>
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -35,6 +37,7 @@ export default function Disconnect() {
         </div>
       </HorizontalStack>
     </Box>
+              </>
   );
 }
 

@@ -2,19 +2,23 @@ import { Avatar, Box, HorizontalStack, Text } from "@shopify/polaris"
 
 const ReviewCard = () => {
   return (<>
-    <Box padding={'1'} minHeight="250px" id="ReviewCard">
-     <HorizontalStack>
-     <Avatar size="medium" initials="DD" name="Dinesh Dahal" />
-      <div className="mb-2 ms-2">
-      <Text as="h6" variant="headingXs">
+    <Box padding={'1'} minHeight="175px" id="ReviewCard">
+     <HorizontalStack align="space-between">
+      <HorizontalStack>
+
+<div className="ReviewCard-Avatar">
+     <Avatar size="small" initials="D" name="Dinesh Dahal" />
+</div>
+      <div className="mb-lg-2 mb-1 ms-2">
+      <Text as="p" variant="headingXs">
         Dinesh Dahal
       </Text>
       <Text variant="bodySm" as='span'>
         2017
       </Text>
       </div >
-      <div className="ReviewCard-Avatar ms-4">
-
+        </HorizontalStack>
+      <div className="ms-3">
       <Avatar initials="G" size="extrasmall"/>
       </div>
      </HorizontalStack>
