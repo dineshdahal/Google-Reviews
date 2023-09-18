@@ -5,6 +5,7 @@ import ReviewCard from './ReviewCard'
 const OffCanvasStatic = () => {
   return (
 <Box>
+<div className="p-3 " style={{background:'#fff'}}>
 <button className="btn d-flex justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasStatic" aria-controls="offCanvasStatic" style={{background:'#e0e0e1'}}>
   <HorizontalStack align='center'>
       <div className="w-100 d-flex justify-content-start flex-wrap">
@@ -55,7 +56,7 @@ const OffCanvasStatic = () => {
 
   </div>
 </div>
-
+</div>
 </Box>
 
 

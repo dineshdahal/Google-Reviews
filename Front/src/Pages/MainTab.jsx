@@ -3,9 +3,10 @@ import { useState, useCallback } from "react";
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
 import Tab3 from "./Tab3";
+import Tab4 from "./Tab4";
 
 const MainTab = () => {
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(2);
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
@@ -29,6 +30,11 @@ const MainTab = () => {
       content: "Layout Setting",
       panelID: "layout-setting-content",
     },
+    {
+      id: "installation",
+      content: "Installation",
+      panelID: "installation-content",
+    },
   ];
 
   return (
@@ -39,6 +45,8 @@ const MainTab = () => {
         {selected ==0 && <Tab1 />}
         {selected ==1 && <Tab2 />}
         {selected ==2 && <Tab3 />}
+        {selected ==3 && <Tab4 />}
+
       </div>
              
         </LegacyCard.Section>

@@ -1,9 +1,10 @@
-import OffCanvasNotStatic from "../components/Swiper/OffCanvasNotStatic";
-import OffCanvasStatic from "../components/Swiper/OffCanvasStatic";
+
 import TemplateBox1 from "../components/Tab2/TemplateBox1";
 import TemplateBox2 from "../components/Tab2/TemplateBox2";
 import TemplateBox3 from "../components/Tab2/TemplateBox3";
 import TemplateBox4 from "../components/Tab2/TemplateBox4";
+import TemplateBox5 from "../components/Tab2/TemplateBox5";
+import TemplateBox6 from "../components/Tab2/TemplateBox6";
 
 const Tab2 = () => {
   return (
@@ -25,11 +26,11 @@ const Tab2 = () => {
       </div>
       <hr />
       <div className="my-4">
-        <OffCanvasStatic />
+        <TemplateBox5 />
       </div>
       <hr />
       <div className="my-4">
-<OffCanvasNotStatic/>
+<TemplateBox6 />
       </div>
     </>
   );

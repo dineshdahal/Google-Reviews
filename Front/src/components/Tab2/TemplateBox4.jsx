@@ -1,21 +1,24 @@
-
-import { Box, Button, HorizontalStack, Text } from "@shopify/polaris"
-import Swiperscroll from "../Swiper/SwiperScroll"
-
+import { Box, Button, HorizontalStack, Text } from "@shopify/polaris";
+import Swiperscroll from "../Swiper/SwiperScroll";
 
 const TemplateBox4 = () => {
   return (
     <>
-
-    <div className="my-2">
-      <HorizontalStack align="space-between">
-      <Text variant="headingMd">4. Review with Grid</Text>
-      <Button size="slim" primary>Select</Button>
-      </HorizontalStack>
-    </div>
-      <Swiperscroll />  
+      <Box>
+        <div className="my-2">
+          <HorizontalStack align="space-between">
+            <Text variant="HeadingSm" as="h4">
+              <strong>4. Review With Grid</strong>
+            </Text>
+            <Button size="slim" primarySuccess>
+              <small>Select</small>
+            </Button>
+          </HorizontalStack>
+        </div>
+        <Swiperscroll />
+      </Box>
     </>
-  )
-}
+  );
+};
 
-export default TemplateBox4
+export default TemplateBox4;

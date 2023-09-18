@@ -75,6 +75,7 @@ a {
     position: relative;
     transform: translateY(-100%);
     position: relative;
+    
 }
 
 #LayoutBox {
@@ -93,3 +94,13 @@ a {
 .scroll-container::-webkit-scrollbar-thumb {
     background: #888;
 }
+
+.wsetting-vertical>div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.swiper-button-disabled{
+    display: none;
+}
+

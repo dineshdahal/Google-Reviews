@@ -2,9 +2,11 @@ import {Box, HorizontalStack, Thumbnail, Text } from '@shopify/polaris'
 import imgmain from './../../assets/nerdplatoon.png'
 import ReviewCard from './ReviewCard'
 
-const OffCanvasNotStatic = () => {
+const OffCanvasFloating = () => {
   return (
-<Box>
+    
+    <Box>
+  <div className="p-3 " style={{background:'#fff'}}>
 
 <button className="btn " style={{background:'#e0e0e1'}} type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasNS" aria-controls="offCanvasNS">
     <Box id="">
@@ -51,16 +53,17 @@ const OffCanvasNotStatic = () => {
          <ReviewCard />
        </div>
 
-      ))}
+))}
       </div>
 
   </div>
 </div>
 
+</div>
 </Box>
 
 
   )
 }
 
-export default OffCanvasNotStatic
+export default OffCanvasFloating
