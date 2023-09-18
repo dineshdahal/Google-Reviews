@@ -7,10 +7,10 @@ const Layout1 = () => {
         <div>
             <Box id="LayoutBox">
                 <HorizontalStack>
-                    <div className=" d-flex flex-column flex-lg-row justify-content-center align-items-center mb-lg-5 mb-2 col-md-3 col-12"  >
+                    <div className=" d-flex flex-column flex-lg-row justify-content-center align-items-center mb-lg-5 mb-2 col-lg-3 col-12"  >
                         <SwiperFront1 />
                     </div>
-                    <div className="px-lg-2 col-12 col-md-9 " >
+                    <div className="px-lg-2 col-12 col-lg-9 " >
                         <SwiperCar1 id='10' />
                     </div>
                 </HorizontalStack>

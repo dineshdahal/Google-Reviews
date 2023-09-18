@@ -1,25 +1,21 @@
 :root {
     --swiper-navigation-size: 16px;
-   
 }
 
 #main-bg {
     background: #f1f2f4;
-  
 }
 
 #disconnect {
     background: #f6f6f6;
     border-color: #e0e0e1;
     border-radius: 5px;
-
 }
 
 #update-box {
     background: #fff;
     border-color: #e0e0e1;
     border-radius: 5px;
-    
 }
 
 #disconnect-btn {
@@ -57,7 +53,7 @@
 #ReviewCard {
     background: #efefef;
     padding: 15px 15px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     border-radius: 2px;
 }
 
@@ -83,5 +79,17 @@ a {
 
 #LayoutBox {
     background: #fff;
-   
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 50%;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
 }

@@ -5,7 +5,7 @@ import imgmain from './../../assets/nerdplatoon.png'
 const SwiperFront2 = () => {
 
   return (
-    <Box id="Swiper-Fron1">
+    <Box id="">
       <HorizontalStack>
         <div className="SwiperFront-Thumbnail me-2">
           <Thumbnail
