@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('Welcome');
 });
 
+
+
 require __DIR__.'/auth.php';
