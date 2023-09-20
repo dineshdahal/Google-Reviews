@@ -16,9 +16,9 @@ return new class extends Migration
             $table->String('name');
             $table->integer('star');
             $table->text('description');
-            $table->date('date');
-            $table->string('photo');
-            $table->string('profilelink');
+            $table->string('date');
+            $table->string('imageLink');
+            $table->string('profileLink');
             $table->timestamps();
         });
     }

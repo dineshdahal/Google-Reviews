@@ -1,11 +1,12 @@
 import {Box, HorizontalStack, Thumbnail, Text } from '@shopify/polaris'
 import imgmain from './../../assets/nerdplatoon.png'
 import ReviewCard from './ReviewCard'
+import { useReviews } from '../../utils/ReviewsContext'
 
-const OffCanvasFloating = () => {
+const OffCanvasFloating = ({settings}) => {
+  const {reviews}=useReviews();
   return (
-    
-    <Box>
+        <Box>
   <div className="p-3 " style={{background:'#fff'}}>
 
 <button className="btn " style={{background:'#e0e0e1'}} type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasNS" aria-controls="offCanvasNS">
@@ -48,12 +49,20 @@ const OffCanvasFloating = () => {
   </div>
   <div className="offcanvas-body">
   <div>
-      {Array.from({length:10}, (_,index)=>(
-         <div key={index} className="col-12 px-2">
-         <ReviewCard />
-       </div>
+     
+  {reviews && reviews.length > 0
+              ? reviews.map((review) => (
 
-))}
+                <div className="col-12 px-2" key={review.id}>
+                  <ReviewCard
+                 
+                  review={review}
+                  settings={settings}
+                />
+                </div>
+              ))
+              : "No Data"}
+
       </div>
 
   </div>

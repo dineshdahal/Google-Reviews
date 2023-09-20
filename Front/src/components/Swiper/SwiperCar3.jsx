@@ -7,10 +7,11 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import ReviewCard from "./ReviewCard";
 import { useEffect, useState } from "react";
+import { useReviews } from "../../utils/ReviewsContext";
 
 // eslint-disable-next-line react/prop-types
-const SwiperCar3 = ({ id }) => {
-    const iid = parseInt(id, 10)
+const SwiperCar3 = ({ settings }) => {
+    const {reviews}=useReviews();
 
     const [slidesNo, SetSlidesNo]= useState(0);
 
@@ -63,9 +64,16 @@ const SwiperCar3 = ({ id }) => {
                     }}
                     autoplay={true}
                 >
-                    {Array.from({ length: iid }, (_, index) => (
-                        <SwiperSlide key={index}><ReviewCard /></SwiperSlide>
-                    ))}
+                    {reviews && reviews.length > 0 ?
+            reviews.map(review =>
+              <SwiperSlide key={review.id}>
+                <ReviewCard
+                 review={review}
+                 settings={settings}
+                />
+              </SwiperSlide>
+            )
+            : "No Data"}
                 </Swiper>
                 <div className="swiper-button-next swiper3-next"></div>
             </div>

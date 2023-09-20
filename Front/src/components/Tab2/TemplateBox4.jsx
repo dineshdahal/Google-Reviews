@@ -1,7 +1,9 @@
 import { Box, Button, HorizontalStack, Text } from "@shopify/polaris";
 import Swiperscroll from "../Swiper/SwiperScroll";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 const TemplateBox4 = () => {
+  const {settings}= useDefaultSettings();
   return (
     <>
       <Box>
@@ -15,7 +17,7 @@ const TemplateBox4 = () => {
             </Button>
           </HorizontalStack>
         </div>
-        <Swiperscroll />
+        <Swiperscroll settings={settings}/>
       </Box>
     </>
   );

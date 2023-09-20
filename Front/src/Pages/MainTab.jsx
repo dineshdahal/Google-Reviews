@@ -1,12 +1,14 @@
 import { LegacyCard, LegacyTabs } from "@shopify/polaris";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
 import Tab3 from "./Tab3";
 import Tab4 from "./Tab4";
 
+import { getReviews } from "../utils/api/reviews";
+
 const MainTab = () => {
-  const [selected, setSelected] = useState(2);
+  const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
     (selectedTabIndex) => setSelected(selectedTabIndex),
@@ -37,6 +39,8 @@ const MainTab = () => {
     },
   ];
 
+  
+// console.log(data)
   return (
     <LegacyCard>
       <LegacyTabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
@@ -46,8 +50,10 @@ const MainTab = () => {
         {selected ==1 && <Tab2 />}
         {selected ==2 && <Tab3 />}
         {selected ==3 && <Tab4 />}
-
+         
       </div>
+
+
              
         </LegacyCard.Section>
       </LegacyTabs>

@@ -1,8 +1,10 @@
 import { Box, Button, HorizontalStack, Text } from "@shopify/polaris"
 import Layout3 from "./Layout3";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 
 const TemplateBox3 = () => {
+    const {settings}=useDefaultSettings();
     return (<>
         <Box>
             <div className="my-2">
@@ -11,7 +13,7 @@ const TemplateBox3 = () => {
                     <Button size="slim" primarySuccess><small>Select</small></Button>
                 </HorizontalStack>
             </div>
-           <Layout3/>
+           <Layout3 settings={settings}/>
         </Box>
     </>
     )

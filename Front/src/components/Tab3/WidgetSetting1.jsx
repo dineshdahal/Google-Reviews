@@ -1,19 +1,25 @@
 import { LegacyStack, Select, Text } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { usePreviewSettings } from "../../utils/PreviewSettingContext";
 const WidgetSetting1 = () => {
-  const [selectMinRatings, setSelectMinRatings] = useState("today");
+  const{settings, setSettings}=usePreviewSettings('');
 
-  const handleSelectChange = useCallback(
-    (value) => setSelectMinRatings(value),
-    []
-  );
+  // const handleChange = useCallback(
+    // (value, name) => setSettings((prev) => ({
+    //   ...prev,
+    //   [name]: value 
+    // })),[setSettings]
+  // );
+  const handleChange=(label, value )=>{
+    console.log(label,value)
+  }
 
   const RatingsOptions = [
-    { label: "1 Star", value: "1star" },
-    { label: "2 Star", value: "2star" },
-    { label: "3 Star", value: "3star" },
-    { label: "4 Star", value: "4star" },
-    { label: "5 Star", value: "5star" },
+    { label: "1 Star", value: 1 },
+    { label: "2 Star", value: 2 },
+    { label: "3 Star", value: 3 },
+    { label: "4 Star", value: 4 },
+    { label: "5 Star", value: 5 },
   ];
 
   const DateOptions = [
@@ -52,8 +58,8 @@ const WidgetSetting1 = () => {
               <Select
                 label=""
                 options={RatingsOptions}
-                onChange={handleSelectChange}
-                value={selectMinRatings}
+                onChange={handleChange('minratings')}
+                value={settings.minratings}
               />
             </LegacyStack.Item>
           </LegacyStack>
@@ -67,10 +73,9 @@ const WidgetSetting1 = () => {
             </div>
             <LegacyStack.Item fill>
               <Select
-              
                 options={DateOptions}
-                onChange={handleSelectChange}
-                value={selectMinRatings}
+                onChange={handleChange}
+                value={settings.date}
               />
             </LegacyStack.Item>
           </LegacyStack>
@@ -86,8 +91,8 @@ const WidgetSetting1 = () => {
               <Select
                 label=""
                 options={AlignOptions}
-                onChange={handleSelectChange}
-                value={selectMinRatings}
+                onChange={handleChange}
+                value={settings.align}
               />
             </LegacyStack.Item>
           </LegacyStack>
@@ -103,8 +108,8 @@ const WidgetSetting1 = () => {
               <Select
                 label=""
                 options={ThemeOptions}
-                onChange={handleSelectChange}
-                value={selectMinRatings}
+                onChange={handleChange}
+                value={settings.theme}
               />
             </LegacyStack.Item>
           </LegacyStack>

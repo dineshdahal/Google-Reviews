@@ -6,63 +6,60 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import ReviewCard from "./ReviewCard";
-import { useEffect, useState } from "react";
+import { useReviews } from "../../utils/ReviewsContext";
 
 // eslint-disable-next-line react/prop-types
-const SwiperCar1 = ({ id }) => {
-  const iid = parseInt(id, 10);
+const SwiperCar1 = ({ settings }) => {
+  let { reviews } = useReviews();
 
-  const [slidesNo, SetSlidesNo] = useState(0);
-
-  useEffect(() => {
-    const noslides = () => {
-      if (window.innerWidth < 778) {
-        SetSlidesNo(1);
-      }
-      if (window.innerWidth >= 778 && window.innerWidth <= 1200) {
-        SetSlidesNo(2);
-      }
-      if (window.innerWidth > 1200) {
-        SetSlidesNo(3);
-      }
-    };
-
-    window.addEventListener("resize", noslides);
-
-    // Call the function once to set the initial slidesPerView
-    noslides();
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("resize", noslides);
-    };
-  }, []);
 
   return (
     <div className="d-flex flex-column">
       <div className="d-flex justify-content-center align-items-center">
-        <div className="swiper-button-prev swiper1-prev"></div>
+        <div className="swiper-button-prev swiper2-prev"></div>
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={15}
-          slidesPerView={slidesNo}
           navigation={{
             clickable: true,
-            nextEl: ".swiper1-next",
-            prevEl: ".swiper1-prev",
+            nextEl: ".swiper2-next",
+            prevEl: ".swiper2-prev",
           }}
-          pagination={{ clickable: true, el: ".swiper1-page" }}
-          autoplay={true}
+          pagination={{ clickable: true, el: ".swiper2-page" }}
+          breakpoints={{
+            778: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1400: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+
+          }}
         >
-          {Array.from({ length: iid }, (_, index) => (
-            <SwiperSlide key={index}>
-              <ReviewCard />
-            </SwiperSlide>
-          ))}
+          {reviews && reviews.length > 0 ?
+            reviews.map(review => {
+              if (review.star < settings.minratings) {
+                return null
+              }
+              if (!review.description.trim() && settings.hidenoreviews) {
+                return null
+              }
+              
+              return <SwiperSlide key={review.id}>
+                <ReviewCard
+                  settings={settings}
+                  review={review}
+                />
+              </SwiperSlide>
+            }
+            )
+            : "No Data"}
         </Swiper>
-        <div className="swiper-button-next swiper1-next"></div>
+        <div className="swiper-button-next swiper2-next"></div>
       </div>
-      <div className="swiper-pagination swiper1-page"></div>
+      <div className="swiper-pagination swiper2-page"></div>
     </div>
   );
 };

@@ -1,7 +1,10 @@
 import { Button, HorizontalStack, Text } from "@shopify/polaris";
 import OffCanvasFloating from "../Swiper/OffCanvasFloating";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 const TemplateBox5 = () => {
+  const {settings}= useDefaultSettings();
+
   return (
     <>
       <div className="my-2">
@@ -14,7 +17,7 @@ const TemplateBox5 = () => {
           </Button>
         </HorizontalStack>
       </div>
-      <OffCanvasFloating />
+      <OffCanvasFloating settings={settings}/>
     </>
   );
 };
