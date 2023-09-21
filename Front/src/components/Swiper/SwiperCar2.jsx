@@ -7,10 +7,38 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import ReviewCard from "./ReviewCard";
 import { useReviews } from "../../utils/ReviewsContext";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
-const SwiperCar2 = ({settings}) => {
-  let{reviews}=useReviews();
+const SwiperCar2 = ({ settings }) => {
+  let { reviews } = useReviews();
+
+  useEffect(()=>{
+    if (settings.theme === 'dark') {
+      const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+      bullets.forEach((bullet) => {
+        bullet.style.background = '#fff';
+
+        const next= document.querySelector('.swiper-button-next');
+        next.style.color='#fff'
+  
+        const prev= document.querySelector('.swiper-button-prev');
+        prev.style.color='#fff'
+      });
+    }
+  
+    if (settings.theme === 'light' || settings.theme === 'transparent' || settings.theme === 'custom') {
+      const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+      bullets.forEach((bullet) => {
+        bullet.style.background = '#333333';
+
+        const next= document.querySelector('.swiper-button-next');
+        next.style.color='#222222'
+          
+        const prev= document.querySelector('.swiper-button-prev');
+        prev.style.color='#222222'
+      });
+    }},[settings.theme])
 
   return (
     <div className="d-flex flex-column">
@@ -39,15 +67,23 @@ const SwiperCar2 = ({settings}) => {
         >
 
           {reviews && reviews.length > 0 ?
-            reviews.map(review =>
-              <SwiperSlide key={review.id}>
-                <ReviewCard
-                 review={review}
-                 settings={settings}
+            reviews.map(review => {
+              if (review.star < settings.minratings) {
+                return null
+              }
+              if (!review.description.trim() && settings.hidenoreviews) {
+                return null
+              }
 
-
-                />
+              return <SwiperSlide key={review.id}>
+                <div className="mb-5">
+                  <ReviewCard
+                    settings={settings}
+                    review={review}
+                  />
+                </div>
               </SwiperSlide>
+            }
             )
             : "No Data"}
 

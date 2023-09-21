@@ -2,7 +2,23 @@ import { Box, HorizontalStack, Text, Thumbnail } from "@shopify/polaris";
 import imgmain from './../../assets/nerdplatoon.png'
 
 
-const SwiperFront1 = () => {
+const SwiperFront1 = ({settings}) => {
+
+
+  let text
+  if(settings.theme=='light'){
+    text={color:'#000'}
+ } 
+ else if(settings.theme=='dark'){
+    text={color:'#fff'}
+ }
+ else if(settings.theme=='transparent'){
+    text={color:'#000'}
+ }
+ else if(settings.theme=='custom'){
+    text={color:settings.text}
+ }
+ 
 
   return (
     
@@ -16,7 +32,7 @@ const SwiperFront1 = () => {
           />
         </div>
         <div>
-          <Text variant="bodySm" as='p'><> Nerd Platoon Pvt. Ltd.</> </Text>
+          <Text variant="bodySm" as='p'><p style={text}> Nerd Platoon Pvt. Ltd.</p> </Text>
           <div className="my-1">
             <Text variant="bodySm" as='h5'>
               <i className="fa fa-star fs-6 " style={{ color: "gold",}} aria-hidden="true"></i>
@@ -27,7 +43,7 @@ const SwiperFront1 = () => {
             </Text>
           </div>
           <Text variant="headingXs" as='h6'>
-            18 Google Reviews</Text>
+            <p style={text}>18 Google Reviews</p></Text>
         </div>
       </HorizontalStack>
     </Box>

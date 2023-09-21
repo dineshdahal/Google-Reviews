@@ -2,6 +2,8 @@
 
 use App\Models\Reviews;
 use App\Models\Settings;
+// use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,42 @@ Route::get('api/settings', function(){
 //  Settings::create([]);
     $settings=Settings::latest()->first();
     return response($settings);
+});
+
+Route::patch('api/settings', function(Request $request) {
+    $data = $request->input();
+    $settings=Settings::latest()->first();
+    $settings->update($data);
+    // "previewid" => $data['previewid'],
+    // "minratings" => $data['minratings'],
+    // "dateformat" => $data['dateformat'],
+    // "align" => $data['align'],
+    // "theme" => $data['theme'],
+    // "hidenoreviews" => $data['hidenoreviews'],
+    // "hideratingtexts" => $data['hideratingtexts'],
+    // "showphoto" => $data['showphoto'],
+    // "showname" => $data['showname'],
+    // "showviewallreviewlink" => $data['showviewallreviewlink'],
+    // "writeareviewbtn" => $data['writeareviewbtn'],
+    // "autoplay" => $data['autoplay'],
+    // "previewbody" => $data['previewbody'],
+    // "cardbody" => $data['cardbody'],
+    // "text" => $data['text']
+
+    return $settings; // You can return the newly created settings if needed
+});
+
+Route::patch('/api/settings/previewid',function(Request $request){
+
+   $setting= Settings::latest()->first();
+   $setting->previewid=$request['previewid'];
+   $setting->save();
+   return('success');
+});
+
+Route::get('/api/settings/previewid', function(){
+    $setting=Settings::latest()->first();
+    return $setting->previewid;
 });
 
 

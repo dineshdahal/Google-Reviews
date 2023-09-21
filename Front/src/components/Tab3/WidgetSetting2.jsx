@@ -21,7 +21,6 @@ const WidgetSetting2 = () => {
             onChange={()=>handleChange('hidenoreviews')}
           />
         </div>
-
         <div className="mb-2">
           <Checkbox
             label="Hide Rating Texts"
@@ -33,7 +32,6 @@ const WidgetSetting2 = () => {
           <Checkbox
             label="Show Reviewers Photo"
             checked={settings.showphoto}
-            
             onChange={()=>handleChange('showphoto')}
           />
         </div>

@@ -1,6 +1,5 @@
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -11,37 +10,40 @@ import { useReviews } from "../../utils/ReviewsContext";
 
 // eslint-disable-next-line react/prop-types
 const SwiperCar3 = ({ settings }) => {
-    const {reviews}=useReviews();
-
-    const [slidesNo, SetSlidesNo]= useState(0);
+    const {reviews}=useReviews();  
 
     useEffect(()=>{
-      const noslides=()=>{
-        if(window.innerWidth<778){
-          SetSlidesNo(1)
-        }
-        if(window.innerWidth>=778 && window.innerWidth<=1200){
-          SetSlidesNo(2)
-        }
-        if(window.innerWidth>1200){
-          SetSlidesNo(3)
-        }
+      if (settings.theme === 'dark') {
+        const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+        bullets.forEach((bullet) => {
+          bullet.style.background = '#fff';
+  
+          const next= document.querySelector('.swiper-button-next');
+          next.style.color='#fff'
+    
+          const prev= document.querySelector('.swiper-button-prev');
+          prev.style.color='#fff'
+        });
       }
-     
-      window.addEventListener('resize', noslides);
     
-      // Call the function once to set the initial slidesPerView
-      noslides();
+      if (settings.theme === 'light' || settings.theme === 'transparent' || settings.theme === 'custom') {
+        const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+        bullets.forEach((bullet) => {
+          bullet.style.background = '#333333';
+  
+          const next= document.querySelector('.swiper-button-next');
+          next.style.color='#222222'
     
-      // Clean up the event listener when the component unmounts
-      return () => {
-        window.removeEventListener('resize', noslides);
-      };
+          const prev= document.querySelector('.swiper-button-prev');
+          prev.style.color='#222222'
+  
+        });
+      }
+  
+  
+  
+    },[settings.theme])
     
-    
-    }, [])
-
-
 
 
 
@@ -52,7 +54,7 @@ const SwiperCar3 = ({ settings }) => {
                 <Swiper
                     modules={[Navigation, Pagination]}
                     spaceBetween={15}
-                    slidesPerView={slidesNo}
+                   
                     navigation={{
                         clickable: true,
                         nextEl: ".swiper3-next",
@@ -62,16 +64,37 @@ const SwiperCar3 = ({ settings }) => {
                         clickable: true,
                         el: ".swiper3-page",
                     }}
+                    breakpoints={{
+                      778: {
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                      },
+                      1400: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                      },
+          
+                    }}
                     autoplay={true}
                 >
-                    {reviews && reviews.length > 0 ?
-            reviews.map(review =>
-              <SwiperSlide key={review.id}>
+                   {reviews && reviews.length > 0 ?
+            reviews.map(review => {
+              if (review.star < settings.minratings) {
+                return null
+              }
+              if (!review.description.trim() && settings.hidenoreviews) {
+                return null
+              }
+              
+              return <SwiperSlide key={review.id}>
+                <div className="mb-lg-5 mb-4">
                 <ReviewCard
-                 review={review}
-                 settings={settings}
-                />
+                  settings={settings}
+                  review={review}
+                  />
+                  </div>
               </SwiperSlide>
+            }
             )
             : "No Data"}
                 </Swiper>

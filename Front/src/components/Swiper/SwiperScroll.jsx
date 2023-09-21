@@ -5,14 +5,34 @@ import { useReviews } from "../../utils/ReviewsContext";
 const Swiperscroll = ({ settings }) => {
   let { reviews } = useReviews();
 
+  let previewbody;
+  let cardbody;
+  let text;
+
+  if (settings.theme == "light") {
+    previewbody = { background: "#fff" };
+    cardbody = { background: "#efefef" };
+    text = { color: "#000" };
+  } else if (settings.theme == "dark") {
+    previewbody = { background: "#222222" };
+    cardbody = { background: "#303030" };
+    text = { color: "#fff" };
+  } else if (settings.theme == "transparent") {
+    previewbody = { background: "transparent" };
+    cardbody = { background: "#efefef" };
+    text = { color: "#000" };
+  } else if (settings.theme == "custom") {
+    previewbody = { background: settings.previewbody };
+    cardbody = { background: settings.cardbody };
+    text = { color: settings.text };
+  }
+
   return (
     <>
-      <div className="pt-3 py-2 pt-lg-4 pt-3" style={{ background: "#fff" }}>
-        <div className="px-3 mx-4 py-3" style={{ background: "#f6f6f6" }}>
+      <div className="" style={previewbody}>
+        <div className="px-3 py-3" style={{ ...text, ...cardbody }}>
           <VerticalStack>
-            <div>
-              <Text variant="headingSm">Google Rating</Text>
-            </div>
+            <Text variant="headingSm">Google Rating</Text>
             <HorizontalStack align="start" gap={2}>
               <Text variant="headingSm">4.9</Text>
 
@@ -70,21 +90,24 @@ const Swiperscroll = ({ settings }) => {
           </VerticalStack>
         </div>
         <div
-          className="px-lg-4 px-2 mt-3 scroll-container"
+          className=" mt-3 scroll-container"
           style={{ height: "400px", overflow: "scroll", overflowX: "hidden" }}
         >
           <div className="row">
             {reviews && reviews.length > 0
-              ? reviews.map((review) => (
-
-                <div className="col-12 col-lg-6 col-xl-4" key={review.id}>
-                  <ReviewCard
-                 
-                  review={review}
-                  settings={settings}
-                />
-                </div>
-              ))
+              ? reviews.map((review) => {
+                  if (review.star < settings.minratings) {
+                    return null;
+                  }
+                  if (!review.description.trim() && settings.hidenoreviews) {
+                    return null;
+                  }
+                  return (
+                    <div key={review.id} className="col-12 col-lg-6 mb-4">
+                      <ReviewCard settings={settings} review={review} />
+                    </div>
+                  );
+                })
               : "No Data"}
           </div>
         </div>

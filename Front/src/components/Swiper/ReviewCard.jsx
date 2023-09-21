@@ -17,24 +17,55 @@ const ReviewCard = ({  settings, review }) => {
 
   const align = settings.align === 'center' ? 'text-center' : settings.align === 'right' ? 'text-end' : 'text-start'
  
+  let cardbody
+  let text
+  if(settings.theme=='light'){
+    
+    cardbody={background:'#efefef'}
+    text={color:'#000'}
+ } 
+ else if(settings.theme=='dark'){
+   
+    cardbody={background:'#303030'}
+    text={color:'#fff'}
+ }
+ else if(settings.theme=='transparent'){
+  
+    cardbody={background:'#efefef'}
+    text={color:'#000'}
+ }
+ else if(settings.theme=='custom'){
+    cardbody={background:settings.cardbody}
+    text={color:settings.text}
+ }
+ 
+
+
 
   return (
     <>
-      <Box padding={""} minHeight="200px" id="ReviewCard">
+   
+      <Box padding={""}  id="ReviewCard">
+        <div className="p-3" style={{...cardbody, minHeight:'200px'}} >
         <HorizontalStack align="space-between">
           <HorizontalStack>
-            {settings.showphoto?<div className="ReviewCard-Avatar">
+            {settings.showphoto?
+            <div className="ReviewCard-Avatar">
               <Avatar size="small" name={review.name} source={review.imageLink} />
             </div>:''}
             
-            <div className="mb-lg-2 mb-1 ms-1">
+            <div className="mb-lg-2 mb-1 ms-1" style={text}>
              {settings.showname? <Text as="p" variant="headingXs">
                 {review.name}
               </Text>:''}
 
-             {settings.dateformat=='hide'? '':<Text variant="bodySm" as="span">
+             {settings.dateformat=='hide'? '':
+             <div style={text}>
+             <Text variant="bodySm" as="span">
                 {review.date}
-              </Text>}
+              </Text>
+             </div>
+              }
             </div>
           </HorizontalStack>
           
@@ -48,13 +79,15 @@ const ReviewCard = ({  settings, review }) => {
           </Text>
         </div>
         {settings.hideratingtexts?'':
-        <div className={align}>
+        <div className={align} style={text}>
           <Text variant="bodySm" as="p">
             {review.description}      
           </Text>
         </div>
         }
+        </div>
       </Box>
+      
 
     </>
   );

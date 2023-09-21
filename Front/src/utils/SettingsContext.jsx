@@ -1,16 +1,30 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { getReviews, getSettings } from './api/reviews';
 
 const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
 
+  
+  // const [data, setData] = useState([])
+  const [settings, setSettings] = useState([]);
+
+  useEffect(() => {
+        const fetchSettings = async () => {
+          const daata = await getSettings()
+          setSettings(daata)
+        }
+        if(settings.length<1){
+          fetchSettings()
+        }
+  })
 
   const initialSettings = {
     previewid: 1,
     minratings: "1",
     dateformat: "my",
     align: "right",
-    theme: "dark",
+    theme: "light",
     hidenoreviews: 0,
     hideratingtexts: 0,
     showphoto: 1,
@@ -23,7 +37,6 @@ export const SettingsProvider = ({ children }) => {
     text: "#000",
   };
 
-  const [settings, setSettings] = useState(initialSettings);
 
   return (
     <SettingsContext.Provider value={{ settings, setSettings }}>

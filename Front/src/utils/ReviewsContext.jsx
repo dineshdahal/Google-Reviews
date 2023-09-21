@@ -1,13 +1,29 @@
-import { useState, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
+import { getReviews } from "./api/reviews";
 
 const ReviewsContext = createContext();
 
 export const ReviewsProvider = ({ children }) => {
+
+
+    const [reviews,setReviews]=useState([])
+
+    useEffect(() => {
+        const reviewdata = async () => {
+          const daata = await getReviews()
+          setReviews(daata)
+        }
+
+        if(reviews.length<1){
+          reviewdata()
+        }
+  },[])
+
     const initialReviews = [
         {
             "id": 1,
             "name": "Parbat Limbu",
-            "star": 5,
+            "star": 3,
             "description": "I feel fortunate to have had the opportunity to work with such a remarkable team. Their dedication, ...",
             "date": "2 weeks ago",
             "imageLink": "https://lh3.googleusercontent.com/a/ACg8ocLkG-otiG9fV5UM92LycPHRSN2cOhWb7wUd_LWwvAAG=w36-h36-p-rp-mo-br100",
@@ -160,14 +176,13 @@ export const ReviewsProvider = ({ children }) => {
         {
             "id": 18,
             "name": "Laxmi Tiwari",
-            "star": 5,
+            "star": 3,
             "description": "",
             "date": "a year ago",
             "imageLink": "https://lh3.googleusercontent.com/a-/ALV-UjVBJKHAb44CYSfEN4vY5qRnV-UV4KAkQNw-RiZN-lr8kJ8=w36-h36-p-rp-mo-ba4-br100",
             "profileLink": "https://www.google.com/maps/contrib/101571339437075709010/reviews?hl=en-US"
         }
     ]
-const reviews=initialReviews
 
     return (
         <ReviewsContext.Provider value={{reviews}}>
