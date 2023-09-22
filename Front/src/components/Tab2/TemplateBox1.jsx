@@ -17,7 +17,10 @@ const handleChange=(id)=>{
     const selectTemplate = async (id) => {
       try {
         await editPreviewID(id);
-        console.log('Template selected successfully');
+        setSettings((prev) => ({
+          ...prev,
+          previewid: id 
+        }));
       } catch (error) {
         console.error('An error occurred while selecting the template:', error);
       }

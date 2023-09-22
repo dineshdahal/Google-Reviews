@@ -27,7 +27,7 @@ const Layout2 = ({ settings }) => {
 
     return (
         <Box id="LayoutBox">
-            <div className="py-2" style={previewbody}>
+            <div className="pt-4" style={previewbody}>
                 {settings.writeareviewbtn ? (
                     <div className="d-flex justify-content-end mx-4 mb-2 ">
                         <Button size="slim" primary>

@@ -1,6 +1,7 @@
 import { LegacyStack, Select, Text } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 import { usePreviewSettings } from "../../utils/PreviewSettingContext";
+import ColorPicker from "./ColorPicker";
 const WidgetSetting1 = () => {
   const { settings, setSettings } = usePreviewSettings('');
 
@@ -127,7 +128,21 @@ const WidgetSetting1 = () => {
                 value={settings.theme}
               />
             </LegacyStack.Item>
+            
           </LegacyStack>
+          {settings.theme==='custom'?
+          <LegacyStack alignment="center">
+            <div style={{ width: "125px" }}>
+            </div>
+            <div className="my-2">
+
+            <LegacyStack.Item fill>
+            <ColorPicker/>
+            </LegacyStack.Item>
+
+            </div>
+          </LegacyStack>
+        :''}
         </div>
       </div>
     </>

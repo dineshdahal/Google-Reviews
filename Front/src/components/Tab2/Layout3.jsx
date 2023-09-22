@@ -32,7 +32,7 @@ const Layout3 = ({ settings }) => {
   return (
     <div className="px-lg-3 pt-lg-3 p-2 pb-0 " style={{ background: '#fff' }}>
       <Box id="LayoutBox">
-        <div className="p-2" style={previewbody}>
+        <div className="pt-2" style={previewbody}>
           {settings.writeareviewbtn ? (
             <div className="d-flex justify-content-end mx-4 mb-2 ">
               <Button size="slim" primary>

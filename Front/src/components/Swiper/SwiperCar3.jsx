@@ -25,8 +25,20 @@ const SwiperCar3 = ({ settings }) => {
           prev.style.color='#fff'
         });
       }
+      if (settings.theme === 'custom') {
+        const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+        bullets.forEach((bullet) => {
+          bullet.style.background = settings.text;
+  
+          const next= document.querySelector('.swiper-button-next');
+          next.style.color=settings.text
     
-      if (settings.theme === 'light' || settings.theme === 'transparent' || settings.theme === 'custom') {
+          const prev= document.querySelector('.swiper-button-prev');
+          prev.style.color=settings.text
+        });
+      }
+    
+      if (settings.theme === 'light' || settings.theme === 'transparent') {
         const bullets = document.querySelectorAll('.swiper-pagination-bullet');
         bullets.forEach((bullet) => {
           bullet.style.background = '#333333';
@@ -40,13 +52,8 @@ const SwiperCar3 = ({ settings }) => {
         });
       }
   
-  
-  
-    },[settings.theme])
+    },[settings])
     
-
-
-
     return (
         <div className="d-flex flex-column">
             <div className="d-flex justify-content-center align-items-center">
@@ -87,7 +94,7 @@ const SwiperCar3 = ({ settings }) => {
               }
               
               return <SwiperSlide key={review.id}>
-                <div className="mb-lg-5 mb-4">
+                <div className=" mb-5">
                 <ReviewCard
                   settings={settings}
                   review={review}

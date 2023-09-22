@@ -5,38 +5,39 @@ import Layout2 from "../Tab2/Layout2";
 import Layout3 from "../Tab2/Layout3";
 import Swiperscroll from "../Swiper/SwiperScroll";
 import OffCanvasFloating from "../Swiper/OffCanvasFloating";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 
 const Preview = () => {
 
-const {settings}=useSettings()
+const {previewsettings}=useDefaultSettings()
 
 const preview=[
   {
   previewid:1,
-  data:<Layout1 settings={settings}/>
+  data:<Layout1 settings={previewsettings}/>
   },
   {
   previewid:2,
-  data:<Layout2 settings={settings}/>
+  data:<Layout2 settings={previewsettings}/>
   },
   {
   previewid:3,
-  data:<Layout3 settings={settings}/>
+  data:<Layout3 settings={previewsettings}/>
   },
   {
   previewid:4,
-  data:<Swiperscroll settings={settings}/>
+  data:<Swiperscroll settings={previewsettings}/>
   },
   {
   previewid:5,
-  data:<OffCanvasFloating settings={settings}/>
+  data:<OffCanvasFloating settings={previewsettings}/>
   },
  ]
 
 
 const selectedpreview=()=>{
-  const selectedPreview = preview.find((item) => item.previewid ==settings.previewid);
+  const selectedPreview = preview.find((item) => item.previewid ==previewsettings.previewid);
   if (!selectedPreview) {
     return <div>Preview not found</div>;
   }
@@ -45,6 +46,8 @@ const selectedpreview=()=>{
 
   return (
     <Box id="Tab1-preview">
+      <div className="px-2 py-2">
+
       <div className="mb-lg-3 mb-1 ">
         <Text variant="headingSm" as="h6">
           Preview
@@ -55,6 +58,7 @@ const selectedpreview=()=>{
      
       </div>
       
+      </div>
     </Box>
   );
 };

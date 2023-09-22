@@ -1,105 +1,131 @@
 :root {
-    --swiper-navigation-size: 16px;
+  --swiper-navigation-size: 16px;
 }
 
 #main-bg {
-    background: #f1f2f4;
+  background: #f1f2f4;
 }
 
 #disconnect {
-    background: #f6f6f6;
-    border-color: #e0e0e1;
-    border-radius: 5px;
+  background: #f6f6f6;
+  border-color: #e0e0e1;
+  border-radius: 5px;
 }
 
 #update-box {
-    background: #fff;
-    border-color: #e0e0e1;
-    border-radius: 5px;
+  background: #fff;
+  border-color: #e0e0e1;
+  border-radius: 5px;
 }
 
 #disconnect-btn {
-    height: fit-content;
-    padding: 10px 15px;
+  height: fit-content;
+  padding: 10px 15px;
 }
 
 .Polaris-LegacyCard__Section {
-    background: #f6f6f6;
-    /* position: absolute; */
-    /* width: 50%; */
+  background: #f6f6f6;
+  /* position: absolute; */
+  /* width: 50%; */
 }
 
 #Tab1-preview {
-    background: #fff;
-    
+  background: #fff;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-    position: static;
-    color: #525252;
-    transform: translateY(-50%);
-    position: static;
+  position: static;
+  color: #525252;
+  transform: translateY(-50%);
+  position: static;
 }
 
 .swiper-button-next {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .swiper-button-prev {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 #ReviewCard {
-    background: #efefef;
-    
-    border-radius: 2px;
+  background: #efefef;
+
+  border-radius: 2px;
 }
 
-.disconnect-thumbnail>.Polaris-Thumbnail>* {
-    object-fit: cover !important;
-    height: 100% !important;
+.disconnect-thumbnail > .Polaris-Thumbnail > * {
+  object-fit: cover !important;
+  height: 100% !important;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.SwiperFront-Thumbnail .Polaris-Thumbnail>* {
-    height: 100%;
-    object-fit: cover;
+.SwiperFront-Thumbnail .Polaris-Thumbnail > * {
+  height: 100%;
+  object-fit: cover;
 }
 
 .swiper-pagination {
-    position: relative;
-    transform: translateY(-100%);
-    position: relative;
-    
+  position: relative;
+  transform: translateY(-100%);
+  position: relative;
 }
 
 #LayoutBox {
-    background: #fff;
+  background: #fff;
 }
 
 .scroll-container::-webkit-scrollbar {
-    width: 4px;
-    border-radius: 50%;
+  width: 4px;
+  border-radius: 50%;
 }
 
 .scroll-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
-.wsetting-vertical>div{
-    display: flex;
-    justify-content: space-between;
+.wsetting-vertical > div {
+  display: flex;
+  justify-content: space-between;
 }
 
-.swiper-button-disabled{
-    visibility: hidden;
+.swiper-button-disabled {
+  visibility: hidden;
 }
 
+.chrome-picker {
+  transform: translate(20%, -120%);
+  position: absolute;
+  margin-bottom: 20px;
+  z-index: 100;
+  /* background: #fff; */
+}
+
+.colorpicker-btn {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid rgb(192, 182, 182);
+}
+
+.Polaris-LegacyTabs__Title {
+  padding-left: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .chrome-picker {
+    /* top: 50% !important; */
+    /* left: 50% !important; */
+    transform: translate(0%, -120%) !important;
+    position: absolute;
+    z-index: 100;
+  }
+}

@@ -24,7 +24,7 @@ const TemplateBox4 = () => {
             <Text variant="HeadingSm" as="h4">
               <strong>4. Review With Grid</strong>
             </Text>
-            {settings.previewid==3?
+            {settings.previewid==4?
                 <Button size="slim" disabled><small>Active</small></Button>:
                 <Button size="slim" onClick={()=>selectTemplate('4')} primarySuccess ><small>Select</small></Button>
                 }

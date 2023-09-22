@@ -32,7 +32,7 @@ const Layout4 = ({ settings }) => {
   return (
     <div className="px-lg-3 pt-lg-3 p-2 pb-0 " style={previewbody}>
       <Box id="LayoutBox">
-        <div className="p-2" style={previewbody}>
+        <div className="pt-2 pb-1" style={previewbody}>
           {settings.writeareviewbtn ? (
             <div className="d-flex justify-content-end mx-4 mb-2 ">
               <Button size="slim" primary>
@@ -43,7 +43,7 @@ const Layout4 = ({ settings }) => {
             ""
           )}
           
-          <div className="px-2 mb-3" style={{ width: '100%' }}>
+          <div className="px-2 mb-lg-3 mb-1" style={{ width: '100%' }}>
           <Swiperscroll settings={settings} />
           </div>
           {settings.showviewallreviewlink ? (

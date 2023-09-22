@@ -28,21 +28,17 @@ else if(settings.theme=='custom'){
    text={color:settings.text}
 }
 
-
-
-  return (
+return (
     <div >
       <Box id="LayoutBox">
-        <div className="pt-3" style={previewbody}>
+        <div className="pt-4" style={previewbody}>
         {settings.writeareviewbtn ? (
           <div className="d-flex justify-content-end mx-4 mb-2 ">
             <Button size="slim" primary>
               Write a review
             </Button>
           </div>
-        ) : (
-          ""
-        )}
+        ) :null}
         <HorizontalStack>
           <div className=" d-flex flex-column flex-lg-row justify-content-center align-items-center mb-lg-5 mb-2 col-lg-3 col-12">
             <SwiperFront1 settings={settings}/>
@@ -56,7 +52,7 @@ else if(settings.theme=='custom'){
             <Button plain><a href="" style={text}>Show all reviews</a></Button>
           </div>
         ) : (
-          ""
+         null
           )}
           </div>
       </Box>

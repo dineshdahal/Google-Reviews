@@ -26,19 +26,36 @@ const SwiperCar2 = ({ settings }) => {
         prev.style.color='#fff'
       });
     }
+    if (settings.theme === 'custom') {
+      const bullets = document.querySelectorAll('.swiper-pagination-bullet');
+      bullets.forEach((bullet) => {
+        bullet.style.background = settings.text;
+
+        const next= document.querySelector('.swiper-button-next');
+        next.style.color=settings.text
   
-    if (settings.theme === 'light' || settings.theme === 'transparent' || settings.theme === 'custom') {
+        const prev= document.querySelector('.swiper-button-prev');
+        prev.style.color=settings.text
+      });
+    }
+  
+    if (settings.theme === 'light' || settings.theme === 'transparent') {
       const bullets = document.querySelectorAll('.swiper-pagination-bullet');
       bullets.forEach((bullet) => {
         bullet.style.background = '#333333';
 
         const next= document.querySelector('.swiper-button-next');
         next.style.color='#222222'
-          
+  
         const prev= document.querySelector('.swiper-button-prev');
         prev.style.color='#222222'
+
       });
-    }},[settings.theme])
+    }
+
+
+
+  },[settings])
 
   return (
     <div className="d-flex flex-column">

@@ -23,7 +23,7 @@ const TemplateBox5 = () => {
           <Text variant="HeadingSm" as="h4">
             <strong>5. Review With Floating</strong>
           </Text>
-          {settings.previewid==3?
+          {settings.previewid==5?
                 <Button size="slim" disabled><small>Active</small></Button>:
                 <Button size="slim" onClick={()=>selectTemplate('5')} primarySuccess ><small>Select</small></Button>
                 }

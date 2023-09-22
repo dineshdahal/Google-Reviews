@@ -1,45 +1,46 @@
-import { Box, HorizontalStack, Thumbnail, Text, Button } from "@shopify/polaris";
+import {
+  Box,
+  HorizontalStack,
+  Thumbnail,
+  Text,
+  Button,
+} from "@shopify/polaris";
 import imgmain from "./../../assets/nerdplatoon.png";
 import ReviewCard from "./ReviewCard";
 import { useReviews } from "../../utils/ReviewsContext";
 
 const OffCanvasFloating = ({ settings }) => {
   const { reviews } = useReviews();
-  let previewbody
-  let cardbody
-  let text
+  let previewbody;
+  let cardbody;
+  let text;
 
-  if (settings.theme == 'light') {
-    previewbody = { background: '#fff' }
-    cardbody = { background: '#efefef' }
-    text = { color: '#000' }
+  if (settings.theme == "light") {
+    previewbody = { background: "#fff" };
+    cardbody = { background: "#efefef" };
+    text = { color: "#000" };
+  } else if (settings.theme == "dark") {
+    previewbody = { background: "#222222" };
+    cardbody = { background: "#303030" };
+    text = { color: "#fff" };
+  } else if (settings.theme == "transparent") {
+    previewbody = { background: "transparent" };
+    cardbody = { background: "#efefef" };
+    text = { color: "#000" };
+  } else if (settings.theme == "custom") {
+    previewbody = { background: settings.previewbody };
+    cardbody = { background: settings.cardbody };
+    text = { color: settings.text };
   }
-  else if (settings.theme == 'dark') {
-    previewbody = { background: '#222222' }
-    cardbody = { background: '#303030' }
-    text = { color: '#fff' }
-  }
-  else if (settings.theme == 'transparent') {
-    previewbody = { background: 'transparent' }
-    cardbody = { background: '#efefef' }
-    text = { color: '#000' }
-  }
-  else if (settings.theme == 'custom') {
-    previewbody = { background: settings.previewbody }
-    cardbody = { background: settings.cardbody }
-    text = { color: settings.text }
-  }
-
 
   const stars = Array.from({ length: 5 }, (_, index) => (
     <i
       key={index}
-      className="fa fa-star my-2 "
+      className="fa fa-star my-1 "
       style={{ color: "gold", fontSize: "14px", marginRight: "3px" }}
       aria-hidden="true"
     ></i>
   ));
-
 
   return (
     <Box>
@@ -54,7 +55,6 @@ const OffCanvasFloating = ({ settings }) => {
         >
           <Box id="">
             <div style={text}>
-
               <HorizontalStack>
                 <div className="SwiperFront-Thumbnail me-2">
                   <Thumbnail source={imgmain} alt="Avatar" size="medium" />
@@ -63,20 +63,22 @@ const OffCanvasFloating = ({ settings }) => {
                   <Text variant="bodySm" as="p">
                     Nerd Platoon Pvt. Ltd.{" "}
                   </Text>
-                  <div className="my-1">
-                    <Text variant="bodySm" as="h5">
+                  <div className="">
+                 
                       {stars}
-                    </Text>
+                    
                   </div>
                   <Text variant="headingXs" as="h6">
-                    18 Google Reviews
+                    <a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg">
+                      18 Google Reviews
+                    </a>
                   </Text>
                 </div>
               </HorizontalStack>
             </div>
           </Box>
         </button>
-        <div className="px-1" >
+        <div className="px-1">
           <Text variant="bodySm" as="p">
             <small className="text-secondary" style={text}>
               Click The Badge Above To Open Reviews
@@ -101,7 +103,9 @@ const OffCanvasFloating = ({ settings }) => {
               data-bs-dismiss="offcanvas"
               aria-label="Close"
               style={previewbody}
-            ><span style={text}>X</span></button>
+            >
+              <span style={text}>X</span>
+            </button>
           </div>
           <div className="offcanvas-body">
             {settings.writeareviewbtn ? (
@@ -116,18 +120,27 @@ const OffCanvasFloating = ({ settings }) => {
             <div>
               {reviews && reviews.length > 0
                 ? reviews.map((review) => {
-                  if (review.star < settings.minratings) { return null }
-                  if (!review.description.trim() && settings.hidenoreviews) { return null }
-                  return (
-                    <div className="col-12 px-2 my-4" key={review.id}>
-                      <ReviewCard settings={settings} review={review} />
-                    </div>
-                  );
-                }) : "No Data"}
+                    if (review.star < settings.minratings) {
+                      return null;
+                    }
+                    if (!review.description.trim() && settings.hidenoreviews) {
+                      return null;
+                    }
+                    return (
+                      <div className="col-12 px-2 my-4" key={review.id}>
+                        <ReviewCard settings={settings} review={review} />
+                      </div>
+                    );
+                  })
+                : "No Data"}
             </div>
             {settings.showviewallreviewlink ? (
               <div className="mx-4 d-flex justify-content-start">
-                <Button plain><a href="" style={text}>Show all reviews</a></Button>
+                <Button plain>
+                  <a href="" style={text}>
+                    Show all reviews
+                  </a>
+                </Button>
               </div>
             ) : (
               ""

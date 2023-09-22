@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getReviews, getSettings } from './api/reviews';
+import { useDefaultSettings } from './DefaultSettingsContext';
 
 const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
 
   
-  // const [data, setData] = useState([])
   const [settings, setSettings] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,8 @@ export const SettingsProvider = ({ children }) => {
         if(settings.length<1){
           fetchSettings()
         }
-  })
+       
+  },[])
 
   const initialSettings = {
     previewid: 1,
