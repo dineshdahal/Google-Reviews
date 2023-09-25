@@ -1,5 +1,5 @@
 import { Avatar, Box, HorizontalStack, Text } from "@shopify/polaris";
-import { useSettings } from "../../utils/SettingsContext";
+import { googleicon } from "../../assets/googleicon";
 // import { useReviews } from "../../utils/ReviewsContext";
 
 const ReviewCard = ({  settings, review }) => {
@@ -70,7 +70,7 @@ const ReviewCard = ({  settings, review }) => {
           </HorizontalStack>
           
           <div className="">
-            <Avatar initials="G" size="extrasmall" />
+            <Avatar source={googleicon} size="extrasmall" />
           </div>
         </HorizontalStack>
         <div className={align}>

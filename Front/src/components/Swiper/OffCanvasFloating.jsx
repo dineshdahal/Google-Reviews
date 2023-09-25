@@ -69,7 +69,7 @@ const OffCanvasFloating = ({ settings }) => {
                     
                   </div>
                   <Text variant="headingXs" as="h6">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg">
+                    <a style={text} href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg">
                       18 Google Reviews
                     </a>
                   </Text>

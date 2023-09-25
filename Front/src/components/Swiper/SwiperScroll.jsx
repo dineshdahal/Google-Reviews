@@ -38,13 +38,17 @@ const Swiperscroll = ({ settings }) => {
       <div className="" style={previewbody}>
         <div className="px-1 px-lg-3 py-2 " style={{ ...text, ...cardbody }}>
           <VerticalStack>
-            <div className="mb-1">
-              <Text variant="bodyMd" as="p">Google Rating</Text>
+            <div className="mb-1">        
+            <Text variant="bodyXl" > 
+            <img className="col-3  col-md-2 col-lg-1 img-fluid  " src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="" />   
+           <span className="fs-5">&nbsp; Rating
+           </span>
+            </Text>
             </div>
             <HorizontalStack align="start" gap={2} blockAlign="center">
               <Text variant="headingLg"><p>4.9</p></Text>
               <Text variant="bodySm" as="h5">{stars}</Text>
-              <Text variant="bodySm" as="p"><a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg">18 reviews</a>
+              <Text variant="bodySm" as="h6"><a style={text} href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg">18 reviews</a>
               </Text>
             </HorizontalStack>
           </VerticalStack>

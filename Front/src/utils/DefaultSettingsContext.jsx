@@ -5,23 +5,8 @@ const DefaultSettingsContext = createContext();
 
 export const DefaultSettingsProvider = ({ children }) => {
 
-  // const [settings, setSettings] = useState([]);
-
-  const [previewsettings, setPreviewSettings] = useState([]);
-
-  useEffect(() => {
-    const fetchSettings = async () => {
-      const daata = await getSettings()
-      setPreviewSettings(daata)
-    }
-    if(previewsettings.length<1){
-      fetchSettings()
-    }
-   
-},[])
-
   const initialSettings = {
-    previewid: previewsettings.previewid,
+    previewid:"",
     minratings: "1",
     dateformat: "my",
     align: "left",
@@ -38,11 +23,32 @@ export const DefaultSettingsProvider = ({ children }) => {
     text: "#000",
   };
 
-const [settings, setSettings]=useState(initialSettings)
+  const [previewsettings1, setPreviewSettings1] = useState([]);
+  const [settings, setSettings] = useState(initialSettings);
+  const [previewsettings2, setPreviewSettings2] = useState([]);
+
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      const daata = await getSettings();
+      setPreviewSettings1(daata);
+      setPreviewSettings2(daata);
+
+      if(previewsettings1.previewid!=settings.previewid){
+        setSettings((prevSettings) => ({
+          ...prevSettings,
+          previewid: daata.previewid,
+        }));
+      }
+    };
+
+  fetchSettings();
+
+  }, [settings]);
 
 
   return (
-    <DefaultSettingsContext.Provider value={{ settings, setSettings, previewsettings, setPreviewSettings }}>
+    <DefaultSettingsContext.Provider value={{ settings, setSettings, previewsettings1, setPreviewSettings1, previewsettings2, setPreviewSettings2 }}>
       {children}
     </DefaultSettingsContext.Provider>
   );

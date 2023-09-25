@@ -1,30 +1,30 @@
 import { LegacyStack, Select, Text } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { usePreviewSettings } from "../../utils/PreviewSettingContext";
 import ColorPicker from "./ColorPicker";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
+import { useCallback } from "react";
 const WidgetSetting1 = () => {
-  const { settings, setSettings } = usePreviewSettings('');
+  const { previewsettings2, setPreviewSettings2 } = useDefaultSettings();
 
   const handleRatingsChange = useCallback(
-    (value) => setSettings((prev) => ({
+    (value) => setPreviewSettings2((prev) => ({
       ...prev,
       minratings: value
     })), []);
 
   const handleDateChange = useCallback(
-    (value) => setSettings((prev) => ({
+    (value) => setPreviewSettings2((prev) => ({
       ...prev,
       dateformat: value
     })), []);
   
     const handleAlignChange = useCallback(
-    (value) => setSettings((prev) => ({
+    (value) => setPreviewSettings2((prev) => ({
       ...prev,
       align: value
     })), []);
 
     const handleThemeChange = useCallback(
-    (value) => setSettings((prev) => ({
+    (value) => setPreviewSettings2((prev) => ({
       ...prev,
       theme: value
     })), []);
@@ -75,7 +75,7 @@ const WidgetSetting1 = () => {
                 name="minratings"
                 options={RatingsOptions}
                 onChange={handleRatingsChange}
-                value={settings.minratings}
+                value={previewsettings2.minratings}
               />
             </LegacyStack.Item>
           </LegacyStack>
@@ -91,7 +91,7 @@ const WidgetSetting1 = () => {
               <Select
                 options={DateOptions}
                 onChange={handleDateChange}
-                value={settings.dateformat}
+                value={previewsettings2.dateformat}
               />
             </LegacyStack.Item>
           </LegacyStack>
@@ -108,7 +108,7 @@ const WidgetSetting1 = () => {
                 label=""
                 options={AlignOptions}
                 onChange={handleAlignChange}
-                value={settings.align}
+                value={previewsettings2.align}
               />
             </LegacyStack.Item>
           </LegacyStack>
@@ -125,12 +125,12 @@ const WidgetSetting1 = () => {
                 label=""
                 options={ThemeOptions}
                 onChange={handleThemeChange}
-                value={settings.theme}
+                value={previewsettings2.theme}
               />
             </LegacyStack.Item>
             
           </LegacyStack>
-          {settings.theme==='custom'?
+          {previewsettings2.theme==='custom'?
           <LegacyStack alignment="center">
             <div style={{ width: "125px" }}>
             </div>

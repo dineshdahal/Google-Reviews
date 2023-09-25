@@ -6,15 +6,14 @@ import { editPreviewID } from "../../utils/api/reviews";
 const TemplateBox2 = () => {
   const { settings, setSettings } = useDefaultSettings();
 
-  const handleChange = (id) => {
-    setSettings((prev) => ({ 
-      ...prev,
-      previewid: id,
-    }));
-  };
+
   const selectTemplate = async (id) => {
     try {
       await editPreviewID(id);
+      setSettings((prev) => ({
+        ...prev,
+        previewid: id 
+      }));
       console.log('Template selected successfully');
     } catch (error) {
       console.error('An error occurred while selecting the template:', error);

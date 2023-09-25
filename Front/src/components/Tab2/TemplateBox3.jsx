@@ -10,6 +10,10 @@ const TemplateBox3 = () => {
       const selectTemplate = async (id) => {
         try {
           await editPreviewID(id);
+          setSettings((prev) => ({
+            ...prev,
+            previewid: id 
+          }));
           console.log('Template selected successfully');
         } catch (error) {
           console.error('An error occurred while selecting the template:', error);

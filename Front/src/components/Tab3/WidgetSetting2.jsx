@@ -1,12 +1,11 @@
 import { Checkbox, VerticalStack } from "@shopify/polaris";
-
-import { usePreviewSettings } from "../../utils/PreviewSettingContext";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 const WidgetSetting2 = () => {
-  const{settings, setSettings}=usePreviewSettings();
+  const{previewsettings2, setPreviewSettings2}=useDefaultSettings();
 
   const handleChange = (name) => {
-    setSettings((prev) => ({
+    setPreviewSettings2((prev) => ({
       ...prev,
       [name]: !prev[name] // Toggle the value of the checkbox
     }));
@@ -17,28 +16,28 @@ const WidgetSetting2 = () => {
         <div className="mb-2">
           <Checkbox
             label="Hide Reviews Without Comments"
-            checked={settings.hidenoreviews}
+            checked={previewsettings2.hidenoreviews}
             onChange={()=>handleChange('hidenoreviews')}
           />
         </div>
         <div className="mb-2">
           <Checkbox
             label="Hide Rating Texts"
-            checked={settings.hideratingtexts}
+            checked={previewsettings2.hideratingtexts}
             onChange={()=>handleChange('hideratingtexts')}
           />
         </div>
         <div className="mb-2">
           <Checkbox
             label="Show Reviewers Photo"
-            checked={settings.showphoto}
+            checked={previewsettings2.showphoto}
             onChange={()=>handleChange('showphoto')}
           />
         </div>
         <div className="mb-2">
           <Checkbox
             label="Show Reviewers Name"
-            checked={settings.showname}
+            checked={previewsettings2.showname}
             name="4"
             onChange={()=>handleChange('showname')}
           />
@@ -46,7 +45,7 @@ const WidgetSetting2 = () => {
         <div className="mb-2">
           <Checkbox
             label="Show View All Reviews Link"
-            checked={settings.showviewallreviewlink}
+            checked={previewsettings2.showviewallreviewlink}
             name="5"
             onChange={()=>handleChange('showviewallreviewlink')}
           />
@@ -54,12 +53,12 @@ const WidgetSetting2 = () => {
         <div className="mb-2">
           <Checkbox
             label="Show Write A Review Button"
-            checked={settings.writeareviewbtn}
+            checked={previewsettings2.writeareviewbtn}
             name="6"
             onChange={()=>handleChange('writeareviewbtn')}
           />
         </div>
-        <Checkbox label="Auto Play" checked={settings.autoplay}   onChange={()=>handleChange('autoplay')} />
+        <Checkbox label="Auto Play" checked={previewsettings2.autoplay}   onChange={()=>handleChange('autoplay')} />
       </VerticalStack>
     </div>
   );

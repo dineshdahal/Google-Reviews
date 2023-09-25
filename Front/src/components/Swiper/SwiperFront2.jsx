@@ -1,5 +1,5 @@
 import { Box, HorizontalStack, Text, Thumbnail, VerticalStack } from "@shopify/polaris";
-import imgmain from './../../assets/nerdplatoon.png'
+
 import { useReviews } from "../../utils/ReviewsContext";
 
 
@@ -44,7 +44,7 @@ const {reviews}=useReviews();
             </Text>
           </div>
           <Text variant="headingXs" as='h6'><a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg" style={text}>Based on <strong>{reviews.length} Google Reviews</strong></a></Text>
-            <Text variant="headingXl" as='h1'><p style={text}>Google</p></Text>
+            <Text variant="headingXl" as='h1'><img className="img-fluid h-50 w-50" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="" /></Text>
       
       </VerticalStack>
       </div>

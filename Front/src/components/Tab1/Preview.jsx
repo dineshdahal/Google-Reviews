@@ -1,6 +1,5 @@
 import { Text, Box } from "@shopify/polaris";
 import Layout1 from "../Tab2/Layout1";
-import { useSettings } from "../../utils/SettingsContext";
 import Layout2 from "../Tab2/Layout2";
 import Layout3 from "../Tab2/Layout3";
 import Swiperscroll from "../Swiper/SwiperScroll";
@@ -10,34 +9,34 @@ import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 const Preview = () => {
 
-const {previewsettings}=useDefaultSettings()
+const {previewsettings1}=useDefaultSettings()
 
 const preview=[
   {
   previewid:1,
-  data:<Layout1 settings={previewsettings}/>
+  data:<Layout1 settings={previewsettings1}/>
   },
   {
   previewid:2,
-  data:<Layout2 settings={previewsettings}/>
+  data:<Layout2 settings={previewsettings1}/>
   },
   {
   previewid:3,
-  data:<Layout3 settings={previewsettings}/>
+  data:<Layout3 settings={previewsettings1}/>
   },
   {
   previewid:4,
-  data:<Swiperscroll settings={previewsettings}/>
+  data:<Swiperscroll settings={previewsettings1}/>
   },
   {
   previewid:5,
-  data:<OffCanvasFloating settings={previewsettings}/>
+  data:<OffCanvasFloating settings={previewsettings1}/>
   },
  ]
 
 
 const selectedpreview=()=>{
-  const selectedPreview = preview.find((item) => item.previewid ==previewsettings.previewid);
+  const selectedPreview = preview.find((item) => item.previewid ==previewsettings1.previewid);
   if (!selectedPreview) {
     return <div>Preview not found</div>;
   }

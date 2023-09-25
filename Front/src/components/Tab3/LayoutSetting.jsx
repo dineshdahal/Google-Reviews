@@ -2,12 +2,12 @@ import { Text, Box, HorizontalStack } from "@shopify/polaris";
 
 import SwiperFront1 from "../Swiper/SwiperFront1";
 import SwiperCar1 from "../Swiper/SwiperCar1";
-import { usePreviewSettings } from "../../utils/PreviewSettingContext";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 // import SwiperCar1 from "../Swiper/TestSwiper";
 // import SwiperFront1 from "../Swiper/SwiperFront1";
 
 const LayoutSetting = () => {
-  const { settings } = usePreviewSettings();
+  const { previewsettings2 } = useDefaultSettings();
 
   return (
     <Box id="Tab1-preview">
@@ -24,7 +24,7 @@ const LayoutSetting = () => {
                 <SwiperFront1 />
               </div>
               <div className="px-lg-2 col-12 " >
-                <SwiperCar1 settings={settings} />
+                <SwiperCar1 settings={previewsettings2} />
               </div>
             </HorizontalStack>
           </Box>

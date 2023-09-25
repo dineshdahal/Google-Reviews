@@ -1,14 +1,12 @@
 import { AppProvider, Page } from "@shopify/polaris";
 import MainTab from "./Pages/MainTab";
-
-import { SettingsProvider } from './utils/SettingsContext';
 import {ReviewsProvider} from './utils/ReviewsContext';
 import { DefaultSettingsProvider } from "./utils/DefaultSettingsContext";
 
 const App = () => {
   return (
     <>
-    <SettingsProvider>
+
       <DefaultSettingsProvider>
 
       <ReviewsProvider>
@@ -19,7 +17,7 @@ const App = () => {
       </AppProvider>
       </ReviewsProvider>
       </DefaultSettingsProvider>
-    </SettingsProvider>
+
     </>
   );
 };

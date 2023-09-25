@@ -8,20 +8,21 @@ import {
 } from "@shopify/polaris";
 import WidgetSetting1 from "./WidgetSetting1";
 import WidgetSetting2 from "./WidgetSetting2";
-import { usePreviewSettings } from "../../utils/PreviewSettingContext";
 import axios from "axios";
+import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 const WidgetSetting = () => {
-  const { settings, setSettings } = usePreviewSettings();
+  const { previewsettings2, setPreviewSettings2 } = useDefaultSettings();
 
   const handleUpdate = () => {
     axios
-      .patch("http://localhost:8000/api/settings", settings)
+      .patch("http://localhost:8000/api/settings", previewsettings2)
       .then(console.log("success"))
       .catch((error) => console.log(error));
   };
+
 const handleReset=()=>{
-  setSettings({
-    previewid: settings.previewid,
+  setPreviewSettings2({
+    previewid: previewsettings2.previewid,
     minratings: "1",
     dateformat: "my",
     align: "left",

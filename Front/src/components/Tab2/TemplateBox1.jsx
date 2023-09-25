@@ -5,14 +5,7 @@ import { editPreviewID } from "../../utils/api/reviews";
 
 const TemplateBox1 = () => {
 
-    const{settings, setSettings}=useDefaultSettings();
-
-const handleChange=(id)=>{
-    setSettings((prev) => ({
-        ...prev,
-        previewid: id 
-      }));    
-    }
+    const{settings, setSettings, setPreviewSettings1}=useDefaultSettings();
 
     const selectTemplate = async (id) => {
       try {
@@ -21,16 +14,22 @@ const handleChange=(id)=>{
           ...prev,
           previewid: id 
         }));
+        setPreviewSettings1((prev) => ({
+          ...prev,
+          previewid: id 
+        }));
+
       } catch (error) {
         console.error('An error occurred while selecting the template:', error);
       }
     };
 
+
     return (<>
      <div className="my-2"> 
             <HorizontalStack align="space-between" blockAlign="center">
                 <Text variant="HeadingSm" as="h4"><strong>1. Review With Badge-I</strong></Text>
-                {settings.previewid==1?
+                {settings.previewid===1?
                 <Button size="slim" disabled><small>Active</small></Button>:
                 <Button size="slim" onClick={()=>selectTemplate(1)} primarySuccess><small>Select</small></Button>
                 }
