@@ -26,7 +26,7 @@ export const DefaultSettingsProvider = ({ children }) => {
   const [previewsettings1, setPreviewSettings1] = useState([]);
   const [settings, setSettings] = useState(initialSettings);
   const [previewsettings2, setPreviewSettings2] = useState([]);
-
+const[reload, setReload]=useState({reload:false});
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -46,9 +46,12 @@ export const DefaultSettingsProvider = ({ children }) => {
 
   }, [settings]);
 
+  
+
+
 
   return (
-    <DefaultSettingsContext.Provider value={{ settings, setSettings, previewsettings1, setPreviewSettings1, previewsettings2, setPreviewSettings2 }}>
+    <DefaultSettingsContext.Provider value={{reload, setReload, settings, setSettings, previewsettings1, setPreviewSettings1, previewsettings2, setPreviewSettings2 }}>
       {children}
     </DefaultSettingsContext.Provider>
   );

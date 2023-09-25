@@ -79,10 +79,9 @@ const SwiperCar3 = ({ settings }) => {
                       1400: {
                         slidesPerView: 3,
                         spaceBetween: 10,
-                      },
-          
+                      },         
                     }}
-                    autoplay={true}
+                    autoplay={settings.autoplay?{delay:3000}:{delay:99999999}}
                 >
                    {reviews && reviews.length > 0 ?
             reviews.map(review => {

@@ -11,14 +11,16 @@ import WidgetSetting2 from "./WidgetSetting2";
 import axios from "axios";
 import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 const WidgetSetting = () => {
-  const { previewsettings2, setPreviewSettings2 } = useDefaultSettings();
+  const { previewsettings2, setPreviewSettings1 , setPreviewSettings2,  } = useDefaultSettings();
 
-  const handleUpdate = () => {
-    axios
+  const handleUpdate =  () => {
+const post= axios
       .patch("http://localhost:8000/api/settings", previewsettings2)
-      .then(console.log("success"))
+      .then(console.log('success'))
       .catch((error) => console.log(error));
-  };
+  
+      post? setPreviewSettings1(previewsettings2):console.log('error')
+   };
 
 const handleReset=()=>{
   setPreviewSettings2({

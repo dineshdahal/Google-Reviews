@@ -58,7 +58,9 @@ const WidgetSetting2 = () => {
             onChange={()=>handleChange('writeareviewbtn')}
           />
         </div>
+        {previewsettings2.previewid==1||previewsettings2.previewid==2||previewsettings2.previewid==3?
         <Checkbox label="Auto Play" checked={previewsettings2.autoplay}   onChange={()=>handleChange('autoplay')} />
+      :null}
       </VerticalStack>
     </div>
   );

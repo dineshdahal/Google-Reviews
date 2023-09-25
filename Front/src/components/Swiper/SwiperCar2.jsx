@@ -78,9 +78,8 @@ const SwiperCar2 = ({ settings }) => {
             1400: {
               slidesPerView: 3,
               spaceBetween: 10,
-            },
-
-          }}
+            }}}
+            autoplay={settings.autoplay?{delay:3000}:{delay:99999999}}
         >
 
           {reviews && reviews.length > 0 ?

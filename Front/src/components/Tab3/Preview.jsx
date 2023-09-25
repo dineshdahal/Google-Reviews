@@ -7,7 +7,7 @@ import OffCanvasFloating from "../Swiper/OffCanvasFloating";
 import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 
 const Preview = () => {
-    const {previewsettings2, usePreviewSettings2}=useDefaultSettings();
+    const {previewsettings2, setPreviewSettings2}=useDefaultSettings();
 
     return (
         <div>
