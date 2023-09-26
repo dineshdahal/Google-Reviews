@@ -8,10 +8,11 @@ import "swiper/css/scrollbar";
 
 import ReviewCard from "./ReviewCard";
 import { useReviews } from "../../utils/ReviewsContext";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const SwiperCar1 = ({ settings }) => {
   let { reviews } = useReviews();
+  const autoplayy = useRef(null);
 
   useEffect(() => {
     if (settings.theme === "dark") {
@@ -51,21 +52,27 @@ const SwiperCar1 = ({ settings }) => {
         prev.style.color = "#222222";
       });
     }
-  }, [settings]);
+    if(autoplayy.current && settings.autoplay){
+      autoplayy.current.swiper.autoplay.start();
+    }else{
+      autoplayy.current.swiper.autoplay.stop();
+    }
+  }, [settings,autoplayy]);
 
   return (
     <div className="d-flex flex-column">
       <div className="d-flex justify-content-center align-items-center">
-        <div className="swiper-button-prev swiper2-prev"></div>
+        <div className="swiper-button-prev swiper1-prev"></div>
         <Swiper
+        ref={autoplayy}
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={15}
           navigation={{
             clickable: true,
-            nextEl: ".swiper2-next",
-            prevEl: ".swiper2-prev",
+            nextEl: ".swiper1-next",
+            prevEl: ".swiper1-prev",
           }}
-          pagination={{ clickable: true, el: ".swiper2-page" }}
+          pagination={{ clickable: true, el: ".swiper1-page" }}
           breakpoints={{
             778: {
               slidesPerView: 2,
@@ -76,7 +83,7 @@ const SwiperCar1 = ({ settings }) => {
               spaceBetween: 10,
             },
           }}
-          autoplay={settings.autoplay?{delay:2000,  }:false}
+          autoplay={settings.autoplay ?  {delay:2000 } : false}
     
         >
           {reviews && reviews.length > 0
@@ -97,10 +104,9 @@ const SwiperCar1 = ({ settings }) => {
               })
             : "No Data"}
         </Swiper>
-
-        <div className="swiper-button-next swiper2-next"></div>
+        <div className="swiper-button-next swiper1-next"></div>
       </div>
-      <div className="swiper-pagination swiper2-page"></div>
+      <div className="swiper-pagination swiper1-page"></div>
     </div>
   );
 };

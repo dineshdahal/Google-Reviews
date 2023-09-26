@@ -132,4 +132,14 @@ a {
 
 a{
   text-decoration: none;
+  
+}
+
+.offcanvas-body::-webkit-scrollbar {
+  display: none;
+}
+
+.g-icon-card{
+  height: 18px;
+  width: 18px;
 }

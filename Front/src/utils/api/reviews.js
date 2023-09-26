@@ -26,6 +26,7 @@ export const getReviews = async () => {
       // Check if the update was successful
       if (response.status === 200) {
         console.log('Preview ID updated successfully');
+        
       } else {
         console.error('Failed to update Preview ID');
       }

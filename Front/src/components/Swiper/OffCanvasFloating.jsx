@@ -1,13 +1,17 @@
+import google from "../../assets/google.png";
 import {
   Box,
   HorizontalStack,
   Thumbnail,
   Text,
   Button,
+  Avatar,
 } from "@shopify/polaris";
 import imgmain from "./../../assets/nerdplatoon.png";
 import ReviewCard from "./ReviewCard";
 import { useReviews } from "../../utils/ReviewsContext";
+import WriteAReview from "../Others/WriteAReview";
+import ViewAllReviewsLink from "../Others/ViewAllReviewsLink";
 
 const OffCanvasFloating = ({ settings }) => {
   const { reviews } = useReviews();
@@ -63,13 +67,12 @@ const OffCanvasFloating = ({ settings }) => {
                   <Text variant="bodySm" as="p">
                     Nerd Platoon Pvt. Ltd.{" "}
                   </Text>
-                  <div className="">
-                 
-                      {stars}
-                    
-                  </div>
+                  <div className="">{stars}</div>
                   <Text variant="headingXs" as="h6">
-                    <a style={text} href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg">
+                    <a
+                      style={text}
+                      href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg"
+                    >
                       18 Google Reviews
                     </a>
                   </Text>
@@ -95,28 +98,26 @@ const OffCanvasFloating = ({ settings }) => {
           style={previewbody}
         >
           <div className="offcanvas-header" style={text}>
-            <h5 className="offcanvas-title" id="offCanvasNSLabel">
-              Google Reviews
-            </h5>
+            <Text variant="headingLg" as="h2">
+              <span style={text}>Google Reivews</span>
+            </Text>
             <button
               type="button"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-              style={previewbody}
+              style={{ ...previewbody, border: "none" }}
             >
-              <span style={text}>X</span>
+              <Button plain>
+                <i class="fa fa-close fs-4" style={text} aria-hidden="true"></i>
+              </Button>
             </button>
           </div>
-          <div className="offcanvas-body">
-            {settings.writeareviewbtn ? (
-              <div className="d-flex justify-content-end mx-4 mb-2 ">
-                <Button size="slim" primary>
-                  Write a review
-                </Button>
-              </div>
-            ) : (
-              ""
-            )}
+            {settings.writeareviewbtn ? 
+            <div className="px-1">
+              <WriteAReview />
+            </div> 
+             : null}
+          <div className="offcanvas-body" >
             <div>
               {reviews && reviews.length > 0
                 ? reviews.map((review) => {
@@ -127,7 +128,7 @@ const OffCanvasFloating = ({ settings }) => {
                       return null;
                     }
                     return (
-                      <div className="col-12 px-2 my-4" key={review.id}>
+                      <div className="col-12 px-1 my-lg-3 my-2" key={review.id}>
                         <ReviewCard settings={settings} review={review} />
                       </div>
                     );
@@ -135,13 +136,7 @@ const OffCanvasFloating = ({ settings }) => {
                 : "No Data"}
             </div>
             {settings.showviewallreviewlink ? (
-              <div className="mx-4 d-flex justify-content-start">
-                <Button plain>
-                  <a href="" style={text}>
-                    Show all reviews
-                  </a>
-                </Button>
-              </div>
+              <ViewAllReviewsLink text={text} />
             ) : (
               ""
             )}

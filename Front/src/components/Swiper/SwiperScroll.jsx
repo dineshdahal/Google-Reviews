@@ -35,7 +35,7 @@ const Swiperscroll = ({ settings }) => {
 
   return (
     <>
-      <div className="" style={previewbody}>
+      <div className="p-3" style={previewbody}>
         <div className="px-1 px-lg-3 py-2 " style={{ ...text, ...cardbody }}>
           <VerticalStack>
             <div className="mb-1">        

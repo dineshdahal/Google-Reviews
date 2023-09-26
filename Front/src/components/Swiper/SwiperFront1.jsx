@@ -29,7 +29,7 @@ const SwiperFront1 = ({ settings }) => {
           />
         </div>
         <div>
-          <Text variant="bodySm" as='p'><p style={text}> Nerd Platoon Pvt. Ltd.</p> </Text>
+          <Text variant="headingXs" as='h6'><span style={text} > Nerd Platoon Pvt. Ltd.</span> </Text>
           <div className="my-1">
             <Text variant="bodySm" as='h5'>
               <i className="fa fa-star fs-6 " style={{ color: "gold", }} aria-hidden="true"></i>
@@ -40,7 +40,7 @@ const SwiperFront1 = ({ settings }) => {
             </Text>
           </div>
           <Text variant="headingXs" as='h6'>
-            <a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg" style={text}>18 Google Reviews</a></Text>
+            <a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJQdZRWZoa6zkRTiJKYkgF5wg" style={text} className="fw-bold">18 Google Reviews</a></Text>
         </div>
       </HorizontalStack>
     </Box>

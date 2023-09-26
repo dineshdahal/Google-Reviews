@@ -1,40 +1,55 @@
-import { Box, Button, HorizontalStack, Text } from "@shopify/polaris";
+import {
+  Box,
+  Button,
+  HorizontalStack,
+  LegacyStack,
+  Text,
+} from "@shopify/polaris";
 import { useDefaultSettings } from "../../utils/DefaultSettingsContext";
 import Layout4 from "./Layout4";
 import { editPreviewID } from "../../utils/api/reviews";
+import { useState } from "react";
 
 const TemplateBox4 = () => {
-  const {settings, setSettings}= useDefaultSettings();
-
+  const { settings, setSettings } = useDefaultSettings();
+  const [ loading, setLoading] = useState(false);
   const selectTemplate = async (id) => {
     try {
-      await editPreviewID(id);
+setLoading(true);
+       await editPreviewID(id);
       setSettings((prev) => ({
         ...prev,
-        previewid: id 
+        previewid: id,
       }));
-      console.log('Template selected successfully');
+      setLoading(false)
+      console.log("Template selected successfully");
     } catch (error) {
-      console.error('An error occurred while selecting the template:', error);
+      console.error("An error occurred while selecting the template:", error);
     }
   };
-
 
   return (
     <>
       <Box>
         <div className="my-2">
           <HorizontalStack align="space-between">
-            <Text variant="HeadingSm" as="h4">
-              <strong>4. Review With Grid</strong>
-            </Text>
-            {settings.previewid==4?
-                <Button size="slim" disabled><small>Active</small></Button>:
-                <Button size="slim" onClick={()=>selectTemplate('4')} primarySuccess ><small>Select</small></Button>
-                }
+            <LegacyStack.Item fill>
+              <Text variant="HeadingSm" as="h4">
+                <strong>4. Review With Grid</strong>
+              </Text>
+            </LegacyStack.Item>
+            <Button
+              size="slim"
+              onClick={() => selectTemplate(4)}
+              disabled={settings.previewid === 4 ? true : null}
+              primarySuccess={settings.previewid === 4 ? null : true}
+              loading={ loading}
+            >
+              <small>{settings.previewid === 4 ? "Active" : "Select"}</small>
+            </Button>
           </HorizontalStack>
         </div>
-        <Layout4 settings={settings}/>
+        <Layout4 settings={settings} />
       </Box>
     </>
   );

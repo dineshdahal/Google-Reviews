@@ -1,10 +1,8 @@
 import { Avatar, Box, HorizontalStack, Text } from "@shopify/polaris";
-import { googleicon } from "../../assets/googleicon";
+import googleicon from "../../assets/google.png"
 // import { useReviews } from "../../utils/ReviewsContext";
 
 const ReviewCard = ({  settings, review }) => {
-
-  // let { settingss } = useSettings();
 
   const stars = Array.from({ length: review.star }, (_, index) => (
     <i
@@ -39,9 +37,6 @@ const ReviewCard = ({  settings, review }) => {
     text={color:settings.text}
  }
  
-
-
-
   return (
     <>
    
@@ -52,14 +47,14 @@ const ReviewCard = ({  settings, review }) => {
             {settings.showphoto?
             <div className="ReviewCard-Avatar">
               <Avatar size="small" name={review.name} source={review.imageLink} />
-            </div>:''}
+            </div>:null}
             
             <div className="mb-lg-2 mb-1 ms-1" style={text}>
              {settings.showname? <Text as="p" variant="headingXs">
                 {review.name}
-              </Text>:''}
+              </Text>:null}
 
-             {settings.dateformat=='hide'? '':
+             {settings.dateformat=='hide'? null:
              <div style={text}>
              <Text variant="bodySm" as="span">
                 {review.date}
@@ -69,8 +64,9 @@ const ReviewCard = ({  settings, review }) => {
             </div>
           </HorizontalStack>
           
-          <div className="">
-            <Avatar source={googleicon} size="extrasmall" />
+          <div className="g-icon-card">
+            <img src={googleicon} className="img-fluid" alt="" />
+            {/* <Avatar source={googleicon} size="extrasmall" /> */}
           </div>
         </HorizontalStack>
         <div className={align}>
